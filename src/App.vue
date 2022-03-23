@@ -2,11 +2,10 @@
   <div>asfasfsf</div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
-export default defineComponent({
+<script lang="js">
+export default {
   name: "App"
-})
+}
 </script>
 
 <style scoped>
