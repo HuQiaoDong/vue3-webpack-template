@@ -2,7 +2,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require('vue-loader')
 const path = require("path")
 console.log(__dirname)
-module.exports = {
+
+const config = {
     entry: "./src/main.js",
     output: {
         filename: "bundle.js",
@@ -56,4 +57,16 @@ module.exports = {
         port: 9001,
         open: true
     },
-}
+};
+
+module.exports = (env, argv) => {
+    if (argv.mode === 'development') {
+        config.devtool = 'source-map';
+    }
+
+    if (argv.mode === 'production') {
+    }
+
+    return config;
+};
+
