@@ -1,0 +1,25 @@
+@mixin vCenter{
+  display: flex;
+  align-items: center;
+}
+
+@mixin hCenter{
+  display: flex;
+  justify-content: center;
+}
+
+@mixin hvCenter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin desc{
+  font-size: 13px;
+  color: #999;
+  font-weight: 600;
+}
+
+@mixin wrapper{
+  padding: 5vh 6vw;
+}

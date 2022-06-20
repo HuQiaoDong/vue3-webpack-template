@@ -1,17 +1,27 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require('vue-loader')
 const path = require("path")
-console.log(__dirname)
+const webpack = require("webpack");
+const env = require("./config/env")
 
 const config = {
+    // 打包入口
     entry: "./src/main.js",
     output: {
+        // 打包输出文件名
         filename: "bundle.js",
+        // 每次打包前先删除上次的构建包
         clean: true,
+        // 打包产物存放目录
         path: path.resolve(__dirname,"./dist")
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
+        // 目录别名引用,'@'指向项目src,'css'指向src/styles
+        alias: {
+           '@': path.join(__dirname, 'src'),
+           'css': path.join(__dirname, 'src/styles')
+        }
     },
     mode: "development",
     devtool: "inline-source-map",
@@ -34,37 +44,60 @@ const config = {
                 },
                 exclude: path.resolve(__dirname,"./node_modules/")
             },
-            // 它会应用到普通的 `.css` 文件
+            // 它会应用到`.scss`、`sass`、普通的 `.css` 文件
             // 以及 `.vue` 文件中的 `<style>` 块
             {
-                test: /\.css$/,
+                test: /\.(css|scss|sass)$/,
                 use: [
                     'vue-style-loader',
-                    'css-loader'
+                    'css-loader',
+                    'sass-loader',
+                ]
+            },
+            // 图片资源混入
+            {
+                test: /\.(jpg|png|jepg)$/,
+                use: [
+                    'file-loader',
                 ]
             },
         ]
     },
     plugins: [
+        // html模板插件
         new HtmlWebpackPlugin({
+            // 将打包后的bundlejs注入html模板body标签中
             inject: "body",
+            // 指定打包构建使用的html模板
             template: path.resolve(__dirname + "/public/index.html")
         }),
-        new VueLoaderPlugin()
+        // vue loader
+        new VueLoaderPlugin(),
+        // 定义全局变量
+        new webpack.DefinePlugin({
+            ENV: JSON.stringify(env)
+        })
     ],
+    // 开发环境服务器
     devServer: {
+        // 服务器依赖资源
         static: "./dist",
-        port: 9001,
+        // 服务占用端口
+        port: 8080,
+        // 启动服务器时自动打开服务url
         open: true
     },
 };
 
+// 这里可以对webpack config做一些逻辑处理
 module.exports = (env, argv) => {
-    if (argv.mode === 'development') {
+    // process.env.NODE_ENV是webpack的环境变量参数，配合npm script可以区分环境，依赖cross-env插件
+    console.log(process.env.NODE_ENV)
+    if (process.env.NODE_ENV === 'development') {
         config.devtool = 'source-map';
     }
 
-    if (argv.mode === 'production') {
+    if (process.env.NODE_ENV === 'production') {
     }
 
     return config;

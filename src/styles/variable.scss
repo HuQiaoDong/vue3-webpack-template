@@ -1,0 +1,50 @@
+$skyblue: #f5f9fc;
+$globalpv: 6vw;
+
+@for $i from 1 through 20 {
+  /* padding */
+  .p-#{$i}{
+    padding: #{$i}px;
+  }
+  .pl-#{$i}{
+    padding-left: #{$i}px;
+  }
+  .pr-#{$i}{
+    padding-right: #{$i}px;
+  }
+  .pt-#{$i}{
+    padding-top: #{$i}px;
+  }
+  .pb-#{$i}{
+    padding-bottom: #{$i}px;
+  }
+  .p-vertical-#{$i}{
+    padding: #{$i}px 0;
+  }
+  .p-horizontal-#{$i}{
+    padding: 0 #{$i}px;
+  }
+
+  /* margin */
+  .m-#{$i}{
+    margin: #{$i}px;
+  }
+  .ml-#{$i}{
+    margin-left: #{$i}px;
+  }
+  .mr-#{$i}{
+    margin-right: #{$i}px;
+  }
+  .mt-#{$i}{
+    margin-top: #{$i}px;
+  }
+  .mb-#{$i}{
+    margin-bottom: #{$i}px;
+  }
+  .m-vertical-#{$i}{
+    margin: #{$i}px 0;
+  }
+  .m-horizontal-#{$i}{
+    margin: 0 #{$i}px;
+  }
+}

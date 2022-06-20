@@ -1,16 +1,16 @@
 <template>
-  <div>hello,vue3-Webpack-template</div>
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script lang="js">
-import { inject } from "vue";
-import {BaseApiEnum} from "./api/base";
+import { testApi} from "./api/base";
 
-const axios = inject("axios");
 export default {
   name: "App",
   setup(){
-    axios.get(BaseApiEnum.localApi)
+    testApi()
   }
 }
 </script>
