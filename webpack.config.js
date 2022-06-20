@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 const { VueLoaderPlugin } = require('vue-loader')
 const path = require("path")
 const webpack = require("webpack");
@@ -9,7 +10,7 @@ const config = {
     entry: "./src/main.js",
     output: {
         // 打包输出文件名
-        filename: "bundle.js",
+        filename: "[hash].bundle.js",
         // 每次打包前先删除上次的构建包
         clean: true,
         // 打包产物存放目录
@@ -24,7 +25,7 @@ const config = {
         }
     },
     mode: "development",
-    devtool: "inline-source-map",
+    // devtool: "inline-source-map",
     module: {
         rules: [
             // 混入.vue文件资源
@@ -76,6 +77,19 @@ const config = {
         // 定义全局变量
         new webpack.DefinePlugin({
             ENV: JSON.stringify(env)
+        }),
+        // 打包文件压缩
+        new CompressionPlugin({
+            filename:  (asset) => {
+                return `${asset.filename}.gz` // 重命名压缩资源名称
+            },
+            deleteOriginalAssets: true, // 是否删除原资源
+            algorithm: 'gzip',//算法
+            test: new RegExp(
+                '\\.(js|css)$' //压缩 js 与 css
+            ),
+            threshold: 10240,//只处理比这个值（10kb）大的资源。单位按字节计算
+            minRatio: 0.8//只有压缩率比这个值小的资源才会被处理
         })
     ],
     // 开发环境服务器
@@ -94,7 +108,7 @@ module.exports = (env, argv) => {
     // process.env.NODE_ENV是webpack的环境变量参数，配合npm script可以区分环境，依赖cross-env插件
     console.log(process.env.NODE_ENV)
     if (process.env.NODE_ENV === 'development') {
-        config.devtool = 'source-map';
+        config.devtool = 'inline-source-map';
     }
 
     if (process.env.NODE_ENV === 'production') {

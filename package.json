@@ -1,7 +1,7 @@
 {
   "name": "vue3-webpack-template",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.0.0",
+  "description": "基于webpack的vue3通用开发脚手架",
   "main": "main.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development npx webpack-dev-server",
@@ -15,6 +15,7 @@
     "@babel/preset-env": "^7.16.11",
     "@vue/compiler-sfc": "^3.2.31",
     "babel-loader": "^8.2.4",
+    "compression-webpack-plugin": "^10.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "file-loader": "^6.2.0",
