@@ -1,20 +1,30 @@
 import axios from "axios";
+import Crypto from "../Crypto";
 export const service = axios.create({
     baseURL: ENV.BASE_API, // url = base url + request url
     timeout: 20000, // request timeout
 });
 
 const axiosRequest = (config) => {
-    // do something before request is sent
+    // 对所有POST请加密，必须是json数据提交，不支持表单
+    if (config.method === "post") {
+        config.data = {
+            data: Crypto.EncryptData(JSON.stringify(config.data))
+        }
+    }
     return config;
 };
 
 const axiosResponse = (response) => {
+    if(typeof(response.data) === "string"){
+        response.data = Crypto.DecryptData(response.data);
+    }
     return response.data;
 };
 
 const axiosError = (error) => {
     console.log("request error:", error);
+    return Promise.reject(error);
 };
 
 /* 总请求拦截 */

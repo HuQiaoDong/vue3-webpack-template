@@ -15,6 +15,11 @@ const request = service
 export const testApi = () => {
     return request({
         url: `/base`,
-        method: "GET"
+        method: "POST",
+        // data: "asafsaf",
+        data: {
+            id: 1,
+            name: "Bob"
+        }
     })
 }

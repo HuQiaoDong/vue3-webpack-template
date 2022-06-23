@@ -4,6 +4,7 @@
   "description": "基于webpack的vue3通用开发脚手架",
   "main": "main.js",
   "scripts": {
+    "test": "jest",
     "dev": "cross-env NODE_ENV=development npx webpack-dev-server",
     "build": "cross-env NODE_ENV=production npx webpack"
   },
@@ -12,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.17.8",
+    "@babel/plugin-transform-modules-commonjs": "^7.18.2",
     "@babel/preset-env": "^7.16.11",
     "@vue/compiler-sfc": "^3.2.31",
     "babel-loader": "^8.2.4",
@@ -20,6 +22,7 @@
     "css-loader": "^6.7.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^28.1.1",
     "sass": "^1.52.3",
     "sass-loader": "^13.0.0",
     "vue-loader": "^17.0.0",
@@ -30,6 +33,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "crypto-js": "^4.1.1",
     "vue": "^3.2.31",
     "vue-axios": "^3.4.1",
     "vue-router": "^4.0.16"
