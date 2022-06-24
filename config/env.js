@@ -3,12 +3,14 @@ const config = {
     development: {
         BASE_API: 'http://127.0.0.1:9530',
         CRYPTO_KEY: 'abcdef0123456789',
-        CRYPTO_IV: 'abcdef0123456789'
+        CRYPTO_IV: 'abcdef0123456789',
+        HTTP_ENCRYPT: false,
     },
     production: {
         BASE_API: 'http://127.0.0.1:9530',
         CRYPTO_KEY: 'abcdef0123456789',
-        CRYPTO_IV: 'abcdef0123456789'
+        CRYPTO_IV: 'abcdef0123456789',
+        HTTP_ENCRYPT: true,
     }
 };
 module.exports = config[env];

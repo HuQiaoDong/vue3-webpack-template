@@ -7,10 +7,9 @@ export const service = axios.create({
 
 const axiosRequest = (config) => {
     // 对所有POST请加密，必须是json数据提交，不支持表单
-    if (config.method === "post") {
-        config.data = {
-            data: Crypto.EncryptData(JSON.stringify(config.data))
-        }
+    if (config.method === "post" && ENV.HTTP_ENCRYPT) {
+        config.headers["content-type"] = 'application/json; charset=utf-8'
+        config.data = Crypto.EncryptData(JSON.stringify(config.data))
     }
     return config;
 };
