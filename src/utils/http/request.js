@@ -16,8 +16,8 @@ const axiosRequest = (config) => {
 };
 
 const axiosResponse = (response) => {
-    if(typeof(response.data) === "string"){
-        response.data = Crypto.DecryptData(response.data);
+    if(typeof(response.data.data) === "string"){
+        response.data.data = Crypto.DecryptData(response.data.data);
     }
     return response.data;
 };

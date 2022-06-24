@@ -14,11 +14,10 @@ import { service } from "../utils/http/request";
 const request = service
 export const testApi = () => {
     return request({
-        url: `/base`,
+        url: `/service/swagger/testDecrypt`,
         method: "POST",
-        // data: "asafsaf",
         data: {
-            id: 1,
+            age: 18,
             name: "Bob"
         }
     })
