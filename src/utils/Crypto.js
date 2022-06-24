@@ -1,9 +1,7 @@
 import CryptoJS from "crypto-js"
 
-const key = CryptoJS.enc.Latin1.parse(ENV.CRYPTO_KEY);
-const iv = CryptoJS.enc.Latin1.parse(ENV.CRYPTO_IV);
-// const key = CryptoJS.enc.Latin1.parse("abcdef0123456789");
-// const iv = CryptoJS.enc.Latin1.parse("abcdef0123456789");
+const key = CryptoJS.enc.Latin1.parse(CRYPTO_KEY);
+// const iv = CryptoJS.enc.Latin1.parse(ENV.CRYPTO_IV);
 
 class Crypto {
     // 加密
