@@ -1,5 +1,8 @@
 const webpack = require("webpack");
+// js文件压缩插件
 const CompressionPlugin = require("compression-webpack-plugin");
+// css文件压缩插件
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 // 1.导入公共webpack配置
 const baseConfig = require("./webpack.base.js")
 // 2.导入合并webpack配置项函数
@@ -28,6 +31,11 @@ const testConfig = merge(baseConfig, {
             CRYPTO_KEY: JSON.stringify("abcdef0123456789"),
             HTTP_ENCRYPT: true,
         }),
-    ]
+    ],
+    optimization: {
+        minimizer: [
+            new CssMinimizerPlugin()
+        ]
+    }
 })
 module.exports = testConfig

@@ -1,8 +1,8 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CompressionPlugin = require("compression-webpack-plugin");
 const { VueLoaderPlugin } = require('vue-loader')
 const path = require("path")
 const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     // 打包入口
@@ -49,7 +49,7 @@ module.exports = {
             {
                 test: /\.(css|scss|sass)$/,
                 use: [
-                    'vue-style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     'sass-loader',
                 ]
@@ -61,6 +61,20 @@ module.exports = {
                     'file-loader',
                 ]
             },
+            // csv|tsv文件混入
+            {
+                test: /\.(csv|tsv)$/,
+                use: [
+                    'csv-loader',
+                ]
+            },
+            // xml文件混入
+            {
+                test: /\.xml$/,
+                use: [
+                    'xml-loader',
+                ]
+            }
         ]
     },
     plugins: [
@@ -73,6 +87,10 @@ module.exports = {
         }),
         // vue loader
         new VueLoaderPlugin(),
+        // css文件抽离
+        new MiniCssExtractPlugin({
+            filename: "css/[hash].css"
+        })
     ],
 };
 
