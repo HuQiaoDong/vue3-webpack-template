@@ -6,10 +6,11 @@ export const service = axios.create({
 });
 
 const axiosRequest = (config) => {
+    config.headers["DateTime"] = new Date();
     // 对所有POST请加密，必须是json数据提交，不支持表单
     if (config.method === "post" && HTTP_ENCRYPT) {
-        config.headers["content-type"] = 'application/json; charset=utf-8'
-        config.data = Crypto.EncryptData(JSON.stringify(config.data))
+        config.headers["content-type"] = "application/json; charset=utf-8";
+        config.data = Crypto.EncryptData(JSON.stringify(config.data));
     }
     return config;
 };

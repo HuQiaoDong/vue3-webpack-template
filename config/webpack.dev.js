@@ -1,8 +1,8 @@
 const webpack = require("webpack");
 // 1.导入公共webpack配置
-const baseConfig = require("./webpack.base.js")
+const baseConfig = require("./webpack.base.js");
 // 2.导入合并webpack配置项函数
-const merge = require("webpack-merge").merge
+const merge = require("webpack-merge").merge;
 // 3.合并配置项
 // const env = require("./config/env")
 const devConfig = merge(baseConfig, {
@@ -31,5 +31,5 @@ const devConfig = merge(baseConfig, {
         }),
     ]
 
-})
-module.exports = devConfig
+});
+module.exports = devConfig;

@@ -11,7 +11,7 @@
 // export { BaseApiEnum }
 
 import { service } from "../utils/http/request";
-const request = service
+const request = service;
 export const testApi = () => {
     return request({
         url: `/service/swagger/testDecrypt`,
@@ -20,5 +20,5 @@ export const testApi = () => {
             age: 18,
             name: "Bob"
         }
-    })
-}
+    });
+};

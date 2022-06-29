@@ -6,13 +6,22 @@
 import {testApi} from "../api/base";
 import Data from "@/assets/data.csv";
 import Note from "@/assets/data.xml"
-
 export default {
   name: "Home",
   setup(){
     testApi()
     console.log(Data)
     console.log(Note)
+    const test = () => {
+      console.log("do something");
+    }
+
+    const aopTest = test.around(()=>{
+      console.log("before")
+    },()=>{
+      console.log("after")
+    })
+    aopTest()
   }
 }
 </script>

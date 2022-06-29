@@ -1,8 +1,9 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { VueLoaderPlugin } = require('vue-loader')
-const path = require("path")
+const { VueLoaderPlugin } = require("vue-loader");
+const path = require("path");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
     // 打包入口
@@ -16,11 +17,11 @@ module.exports = {
         path: path.resolve(__dirname,"../dist")
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: [".tsx", ".ts", ".js"],
         // 目录别名引用,'@'指向项目src,'css'指向src/styles
         alias: {
-            '@': path.join(__dirname, '../src'),
-            'css': path.join(__dirname, '../src/styles')
+            "@": path.join(__dirname, "../src"),
+            "css": path.join(__dirname, "../src/styles")
         }
     },
     mode: "development",
@@ -30,16 +31,16 @@ module.exports = {
             // 混入.vue文件资源
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                loader: "vue-loader"
             },
             // 它会应用到普通的 `.js` 文件
             // 以及 `.vue` 文件中的 `<script>` 块
             {
                 test: /\.js$/,
                 use: {
-                    loader: 'babel-loader',
+                    loader: "babel-loader",
                     options: {
-                        presets: ['@babel/preset-env'],
+                        presets: ["@babel/preset-env"],
                     }
                 },
                 exclude: path.resolve(__dirname,"../node_modules/")
@@ -50,29 +51,29 @@ module.exports = {
                 test: /\.(css|scss|sass)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader',
+                    "css-loader",
+                    "sass-loader",
                 ]
             },
             // 图片资源混入
             {
                 test: /\.(jpg|png|jepg)$/,
                 use: [
-                    'file-loader',
+                    "file-loader",
                 ]
             },
             // csv|tsv文件混入
             {
                 test: /\.(csv|tsv)$/,
                 use: [
-                    'csv-loader',
+                    "csv-loader",
                 ]
             },
             // xml文件混入
             {
                 test: /\.xml$/,
                 use: [
-                    'xml-loader',
+                    "xml-loader",
                 ]
             }
         ]
@@ -90,7 +91,9 @@ module.exports = {
         // css文件抽离
         new MiniCssExtractPlugin({
             filename: "css/[hash].css"
-        })
+        }),
+        // eslint
+        new ESLintPlugin()
     ],
 };
 
