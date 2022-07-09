@@ -1,5 +1,6 @@
 import CryptoJS from "crypto-js"
-const key = CryptoJS.enc.Latin1.parse(CRYPTO_KEY);
+// const key = CryptoJS.enc.Latin1.parse(CRYPTO_KEY);
+const key = CryptoJS.enc.Latin1.parse("abcdef123456789");
 // const iv = CryptoJS.enc.Latin1.parse(ENV.CRYPTO_IV);
 
 // 日志装饰器

@@ -4,6 +4,8 @@ const path = require("path");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
+const yaml = require("yaml");
+const json5 = require("json5");
 
 module.exports = {
     // 打包入口
@@ -21,6 +23,7 @@ module.exports = {
         // 目录别名引用,'@'指向项目src,'css'指向src/styles
         alias: {
             "@": path.join(__dirname, "../src"),
+            "root": path.join(__dirname, "../"),
             "css": path.join(__dirname, "../src/styles")
         }
     },
@@ -75,6 +78,22 @@ module.exports = {
                 use: [
                     "xml-loader",
                 ]
+            },
+            // yaml文件解析
+            {
+                test: /\.yaml$/,
+                type: "json",
+                parser: {
+                    parse: yaml.parse
+                }
+            },
+            // json5文件解析
+            {
+                test: /\.json5$/,
+                type: "json",
+                parser: {
+                    parse: json5.parse
+                }
             }
         ]
     },

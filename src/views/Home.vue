@@ -3,15 +3,12 @@
 </template>
 
 <script>
-import {testApi} from "../api/base";
-import Data from "@/assets/data.csv";
-import Note from "@/assets/data.xml"
+import json5 from "@/assets/data.json5";
+import yaml from "@/assets/data.yaml";
 export default {
   name: "Home",
   setup(){
-    testApi()
-    console.log(Data)
-    console.log(Note)
+    console.log(json5,yaml)
     const test = () => {
       console.log("do something");
     }

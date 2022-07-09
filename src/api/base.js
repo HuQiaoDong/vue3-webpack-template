@@ -12,7 +12,7 @@
 
 import { service } from "../utils/http/request";
 const request = service;
-export const testApi = () => {
+export const testApi = (status) => {
     return request({
         url: `/service/swagger/testDecrypt`,
         method: "POST",

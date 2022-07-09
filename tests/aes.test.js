@@ -1,4 +1,4 @@
-import Crypto from "../src/utils/Crypto";
+import Crypto from "@/utils/Crypto";
 
 test("crypto aes test",()=>{
     // var data = [{id: 1}, {id: 2}]
