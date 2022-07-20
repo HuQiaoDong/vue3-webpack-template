@@ -1,12 +1,12 @@
 import router from "../router/index";
-import { Button } from "ant-design-vue";
+import { Button,Layout } from "ant-design-vue";
 
 
 /**
  * 插件集
  * @type {import("vue").Plugin[]}
  */
-const plugins = [router , Button];
+const plugins = [router , Button,Layout];
 
 
 export const userPlugins = app =>{
