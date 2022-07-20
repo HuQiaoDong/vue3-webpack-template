@@ -1,5 +1,6 @@
 <template>
-  <h3>hello,vue3-Webpack-template</h3>
+  <h3>这是首页</h3>
+  <a-button>点击</a-button>
 </template>
 
 <script>
@@ -11,8 +12,5 @@ export default {
 </script>
 
 <style scoped>
-h3{
-  padding: 20px 0;
-  text-align: center;
-}
+
 </style>
