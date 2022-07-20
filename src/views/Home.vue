@@ -1,5 +1,5 @@
 <template>
-  <h3>这是首页</h3>
+  <h3>这是首页1</h3>
   <a-layout>
     <a-layout-header>Header</a-layout-header>
     <a-layout-content>Content</a-layout-content>
