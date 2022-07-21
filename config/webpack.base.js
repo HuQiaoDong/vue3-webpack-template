@@ -19,7 +19,7 @@ module.exports = {
         path: path.resolve(__dirname,"../dist")
     },
     resolve: {
-        extensions: [".tsx", ".ts", ".js"],
+        extensions: [".tsx", ".ts", ".js",".vue"],
         // 目录别名引用,'@'指向项目src,'css'指向src/styles
         alias: {
             "@": path.join(__dirname, "../src"),

@@ -1,54 +1,87 @@
 <template>
-  <div>
+  <div class="main">
     <div class="head_top">
-      <div class="head_left home_logo_">
-        <img class="home_logo_img" src="../../imags/home_logo.png">
+      <div class="head_content">
+        <div class="head_logo">
+          <img class="head_logo_img" src="../../imags/home_logo.png">
+        </div>
+        <div class="head_menu">
+          <a-menu v-model:selectedKeys="current" mode="horizontal">
+            <a-menu-item key="home">
+              首页
+            </a-menu-item>
+            <a-menu-item key="about">
+              <a href="/about"  >
+                关于我们
+              </a>
+            </a-menu-item>
+            <a-menu-item key="news" disabled>
+              新闻中心
+            </a-menu-item>
+            <a-sub-menu key="sub1">
+              <template #title>产品中心</template>
+              <a-menu-item-group title="电子设备">
+                <a-menu-item key="setting:1">手机</a-menu-item>
+                <a-menu-item key="setting:2">电脑</a-menu-item>
+              </a-menu-item-group>
+            </a-sub-menu>
+            <a-menu-item key="alipay">
+              联系我们
+            </a-menu-item>
+          </a-menu>
+        </div>
+        <div class="head_seach">
+          <a-space direction="vertical">
+            <a-input-search
+                v-model:value="value"
+                placeholder=""
+                enter-button
+                @search="onSearch"
+            />
+          </a-space>
+        </div>
       </div>
-      <div class="head_content home_logo_">ddd</div>
-      <div class=" head_right home_logo_">fff</div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "Head"
-};
+<script setup>
+  import { ref } from 'vue';
+  const current = ref(['home']);
 </script>
 
 <style scoped>
-.head_left{
-  width: 25%;
-}
-.head_content{
-  width: 50%;
-}
-.head_right{
-  width: 25%;
-}
-.head_top{
-  display:flex;
-
-  /* 在水平方向排列*/
-  /* row：规定主轴方向为水平*/
-  /* column：规定主轴方向为垂直*/
+  .main{
+    width: 100%;
+    display:flex;
     flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .head_content{
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
 
-/* 在主轴方向如何展示*/
-/* 排列方式：flex-start  flex-end space-around space-between   */
-  justify-content: space-around;
+  .head_top{
+    /*border: 1px solid #e11d1d;*/
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 1200px;
+  }
 
-/* 在副轴方向如何展示*/
-/* 排列方式：flex-start  flex-end  center  */
-  align-items: center;
-}
-
-.home_logo_{
-  /*border: 1px solid #ffffff;*/
-}
-.home_logo_img{
-  width: 60px;
-  height: 60px;
-}
+  .head_seach{
+    /*border: 1px solid #ffffff;*/
+    line-height: 0px;
+  }
+  .head_logo_img{
+    width: 60px;
+    height: 60px;
+  }
 
 </style>
