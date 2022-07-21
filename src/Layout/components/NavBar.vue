@@ -8,12 +8,10 @@
         <div class="head_menu">
           <a-menu v-model:selectedKeys="current" mode="horizontal">
             <a-menu-item key="home">
-              首页
+              <router-link to="/">首页</router-link>
             </a-menu-item>
             <a-menu-item key="about">
-              <a href="/about"  >
-                关于我们
-              </a>
+              <router-link to="/about">关于我们</router-link>
             </a-menu-item>
             <a-menu-item key="news" disabled>
               新闻中心
