@@ -6,6 +6,8 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 // js文件压缩插件
 const CompressionPlugin = require("compression-webpack-plugin");
 
+const HtmlWebpackExternalsPlugin = require("html-webpack-externals-plugin");
+
 // 1.导入公共webpack配置
 const baseConfig = require("./webpack.base.js");
 // 2.导入合并webpack配置项函数
@@ -34,6 +36,18 @@ const prodConfig = merge(baseConfig, {
             CRYPTO_KEY: JSON.stringify("abcdef0123456789"),
             HTTP_ENCRYPT: true,
         }),
+        // 打包后使用cdn引入库文件
+        new HtmlWebpackExternalsPlugin({
+            externals: [{
+                module: "vue",
+                entry: "http://obs.hxcapital.cn/public/js/libs/vue@3.2.37/dist/vue.global.min.js",
+                global: "Vue"
+            },{
+                module: "vue-router",
+                entry: "http://obs.hxcapital.cn/public/js/libs/vue-router@4.1.2/dist/vue-router.global.min.js",
+                global: "VueRouter"
+            }]
+        })
     ],
     optimization: {
         minimizer: [

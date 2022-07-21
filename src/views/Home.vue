@@ -1,5 +1,5 @@
 <template>
-  <h3>hello,vue3-Webpack-template</h3>
+  <h3 class="text-gray-900">hello,vue3-Webpack-template</h3>
 </template>
 
 <script>
