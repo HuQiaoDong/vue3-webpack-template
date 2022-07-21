@@ -1,7 +1,9 @@
 <template>
   <div id="main">
     <a-layout>
-      <a-layout-header>Header</a-layout-header>
+      <a-layout-header>
+        <Head></Head>
+      </a-layout-header>
       <a-layout-content></a-layout-content>
       <a-layout-footer>Footer</a-layout-footer>
     </a-layout>
@@ -10,8 +12,10 @@
 </template>
 
 <script>
+import Head from "./head/Head.vue";
 export default {
   name: "Home",
+  components: {Head},
   setup(){
   }
 }
