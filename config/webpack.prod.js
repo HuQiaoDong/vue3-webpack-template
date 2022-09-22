@@ -33,6 +33,7 @@ const prodConfig = merge(baseConfig, {
             BASE_URL: JSON.stringify("http://api.prod.hxcapital.cn") ,
             CRYPTO_KEY: JSON.stringify("abcdef0123456789"),
             HTTP_ENCRYPT: true,
+            USE_MOCK: false
         }),
     ],
     optimization: {

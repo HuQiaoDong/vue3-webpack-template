@@ -53,6 +53,7 @@
     "@huqiaodong/wrench": "0.0.7",
     "axios": "^0.27.2",
     "crypto-js": "^4.1.1",
+    "mockjs": "^1.1.0",
     "vue": "^3.2.31",
     "vue-axios": "^3.4.1",
     "vue-router": "^4.0.16"

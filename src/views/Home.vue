@@ -9,7 +9,9 @@ import Note from "@/assets/data.xml"
 export default {
   name: "Home",
   setup(){
-    testApi()
+    testApi().then((res)=>{
+      console.log(res)
+    })
     console.log(Data)
     console.log(Note)
     const test = () => {

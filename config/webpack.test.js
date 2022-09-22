@@ -4,9 +4,9 @@ const CompressionPlugin = require("compression-webpack-plugin");
 // css文件压缩插件
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 // 1.导入公共webpack配置
-const baseConfig = require("./webpack.base.js")
+const baseConfig = require("./webpack.base.js");
 // 2.导入合并webpack配置项函数
-const merge = require("webpack-merge").merge
+const merge = require("webpack-merge").merge;
 // 3.合并配置项
 // const env = require("./config/env")
 const testConfig = merge(baseConfig, {
@@ -30,6 +30,7 @@ const testConfig = merge(baseConfig, {
             BASE_URL: JSON.stringify("http://api.test.hxcapital.cn") ,
             CRYPTO_KEY: JSON.stringify("abcdef0123456789"),
             HTTP_ENCRYPT: true,
+            USE_MOCK: false
         }),
     ],
     optimization: {
@@ -37,5 +38,5 @@ const testConfig = merge(baseConfig, {
             new CssMinimizerPlugin()
         ]
     }
-})
-module.exports = testConfig
+});
+module.exports = testConfig;
