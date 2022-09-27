@@ -25,9 +25,9 @@ const devConfig = merge(baseConfig, {
     plugins: [
         // 定义全局变量
         new webpack.DefinePlugin({
-            BASE_URL: JSON.stringify("http://127.0.0.1:9530") ,
-            CRYPTO_KEY: JSON.stringify("abcdef0123456789"),
-            HTTP_ENCRYPT: false,
+            BASE_URL: JSON.stringify("http://127.0.0.1:9530") ,// Ajax基础请求路径
+            CRYPTO_KEY: JSON.stringify("abcdef0123456789"), // AES对称加密密钥
+            HTTP_ENCRYPT: false, // 开启HTTP加密，POST请求生效
         }),
     ]
 

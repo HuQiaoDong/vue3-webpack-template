@@ -1,9 +1,12 @@
 import axios from "axios";
 import Crypto from "../Crypto";
 export const service = axios.create({
-    baseURL: BASE_URL, // url = base url + request url
+    baseURL: USE_MOCK ? "" : BASE_URL, // url = base url + request url Mock模式开启时不指定base url
     timeout: 20000, // request timeout
 });
+
+// 资源白名单
+const whiteList = [""];
 
 const axiosRequest = (config) => {
     config.headers["DateTime"] = new Date();
@@ -16,7 +19,7 @@ const axiosRequest = (config) => {
 };
 
 const axiosResponse = (response) => {
-    if(typeof(response.data.data) === "string"){
+    if(typeof(response.data.data) === "string" && HTTP_ENCRYPT){
         response.data.data = Crypto.DecryptData(response.data.data);
     }
     return response.data;

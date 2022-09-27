@@ -5,7 +5,6 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 // 1.导入公共webpack配置
 const baseConfig = require("./webpack.base.js");
-const HtmlWebpackExternalsPlugin = require("html-webpack-externals-plugin");
 // 2.导入合并webpack配置项函数
 const merge = require("webpack-merge").merge;
 // 3.合并配置项

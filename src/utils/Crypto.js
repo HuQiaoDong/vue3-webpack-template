@@ -46,7 +46,7 @@ class Crypto {
 
     // 解密
     @log("decrypt")
-    static DecryptData(data) {
+    static   DecryptData(data) {
         const decrypted = CryptoJS.AES.decrypt(data, key, {
             mode: CryptoJS.mode.ECB,
             padding: CryptoJS.pad.Pkcs7
