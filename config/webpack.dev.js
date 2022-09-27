@@ -28,7 +28,6 @@ const devConfig = merge(baseConfig, {
             BASE_URL: JSON.stringify("http://127.0.0.1:9530") ,// Ajax基础请求路径
             CRYPTO_KEY: JSON.stringify("abcdef0123456789"), // AES对称加密密钥
             HTTP_ENCRYPT: false, // 开启HTTP加密，POST请求生效
-            USE_MOCK: true // 开启mock，自动拦截Ajax请求
         }),
     ]
 
