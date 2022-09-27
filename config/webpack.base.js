@@ -86,6 +86,8 @@ module.exports = {
             // 指定打包构建使用的html模板
             template: path.resolve(__dirname,"../public/index.html")
         }),
+        // 模块热更新
+        new webpack.HotModuleReplacementPlugin(),
         // vue loader
         new VueLoaderPlugin(),
         // css文件抽离

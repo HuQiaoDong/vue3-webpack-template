@@ -1,7 +1,7 @@
 import axios from "axios";
 import Crypto from "../Crypto";
 export const service = axios.create({
-    baseURL: USE_MOCK ? "" : BASE_URL, // url = base url + request url Mock模式开启时不指定base url
+    baseURL: BASE_URL, // url = base url + request url Mock模式开启时不指定base url
     timeout: 20000, // request timeout
 });
 
