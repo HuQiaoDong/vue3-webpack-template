@@ -59,12 +59,16 @@ module.exports = {
                     "sass-loader",
                 ]
             },
-            // 图片资源混入
+            // 图片资源混入（commonjs规范）
             {
-                test: /\.(jpg|png|jepg)$/,
-                use: [
-                    "file-loader",
-                ]
+                test: /\.(jpg|png|jepg|svg)$/,
+                use: {
+                    loader: "file-loader",
+                    options: {
+                        esModule: false
+                    }
+                },
+                type: "javascript/auto"
             },
             // csv|tsv文件混入
             {
@@ -95,6 +99,16 @@ module.exports = {
                 parser: {
                     parse: json5.parse
                 }
+            },
+            // txt文件解析
+            {
+                test: /\.txt$/,
+                use: "raw-loader"
+            },
+            // 字体资源解析
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: "asset/resource"
             }
         ]
     },

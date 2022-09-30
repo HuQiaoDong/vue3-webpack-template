@@ -65,6 +65,7 @@
     "@huqiaodong/wrench": "0.0.7",
     "axios": "^0.27.2",
     "crypto-js": "^4.1.1",
+    "raw-loader": "^4.0.2",
     "vue": "^3.2.31",
     "vue-router": "^4.0.16"
   }
