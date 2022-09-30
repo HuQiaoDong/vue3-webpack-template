@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const yaml = require("yaml");
 const json5 = require("json5");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
     // 打包入口
@@ -96,6 +97,10 @@ module.exports = {
                 }
             }
         ]
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [new TerserPlugin()],
     },
     plugins: [
         // html模板插件

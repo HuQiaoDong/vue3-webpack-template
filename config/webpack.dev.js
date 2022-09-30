@@ -20,6 +20,7 @@ const devConfig = merge(baseConfig, {
         // 热更新
         hot: true,
     },
+    target: "web",
     // sourcemap调试
     devtool: "inline-source-map",
     plugins: [

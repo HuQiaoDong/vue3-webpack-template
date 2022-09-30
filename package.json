@@ -8,6 +8,7 @@
     "lint": "eslint --ext .js, src",
     "dev": "npx webpack server --config ./config/webpack.dev.js",
     "build": "npx webpack --config ./config/webpack.prod.js",
+    "build:prod": "npx webpack --config ./config/webpack.prod.js",
     "build:test": "npx webpack --config ./config/webpack.test.js",
     "build:analyzer": "cross-env use_analyzer=true npm run build"
   },
@@ -49,6 +50,7 @@
     "sass": "^1.52.3",
     "sass-loader": "^13.0.0",
     "vue-jest": "^5.0.0-alpha.10",
+    "terser-webpack-plugin": "^5.3.6",
     "vue-loader": "^17.0.0",
     "vue-style-loader": "^4.1.3",
     "webpack": "^5.70.0",
