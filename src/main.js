@@ -8,5 +8,8 @@ SuperFunction.install(); //Function切面注册
 
 const app = createApp(App);
 app.use(router);
+// 屏蔽警告信息
+app.config.warnHandler = () => null;
+
 app.mount("#app");
 export const vueApp = app;

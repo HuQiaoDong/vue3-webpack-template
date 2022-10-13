@@ -2,11 +2,14 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 const path = require("path");
 const webpack = require("webpack");
+const chalk = require("chalk");
+const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const yaml = require("yaml");
 const json5 = require("json5");
 const TerserPlugin = require("terser-webpack-plugin");
+
 
 module.exports = {
     // 打包入口
@@ -131,7 +134,11 @@ module.exports = {
             filename: "css/[hash].css"
         }),
         // eslint
-        new ESLintPlugin()
+        new ESLintPlugin(),
+        // 编译进度条
+        new ProgressBarPlugin({
+            format: `  :msg [:bar] ${chalk.green.bold(":percent")} (:elapsed s)`
+        })
     ],
 };
 
