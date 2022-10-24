@@ -1,4 +1,10 @@
 # vue3-webpack-template
+
+### 运行环境
+NodeJs版本号：14.13.0
+
+npm版本号：6.14.8
+
 ### 安装依赖
 ```shell
 npm install
@@ -18,10 +24,11 @@ npm run build:test
 npm run build:prod
 ```
 ### 功能
-1. 环境隔离
+1. 多环境构建部署
 2. 单元测试(支持mock ajax、vue3、esModule)
 3. decorator实现（装饰器）
 4. Function AOP实现
 5. ajax post 报文体数据AES对称加密实现
 6. 开箱即用的axios最简封装
-7. 支持常用资源模块化（jpg、png、jepg、csv、tsv、xml、yaml、json、json5）
+7. 支持常用资源模块化（jpg、png、jepg、csv、tsv、xml、yaml、json、json5、txt、woff|woff2|eot|ttf|otf）
+8. CSS原子类支持——[tailwindcss](https://tailwindcss.com/)
