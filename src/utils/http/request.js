@@ -1,5 +1,6 @@
 import axios from "axios";
 import Crypto from "../Crypto";
+import {CommonUtils} from "@/utils/CommonUtils";
 export const service = axios.create({
     baseURL: BASE_URL, // url = base url + request url Mock模式开启时不指定base url
     timeout: 20000, // request timeout
@@ -9,7 +10,9 @@ export const service = axios.create({
 const whiteList = [""];
 
 const axiosRequest = (config) => {
-    config.headers["DateTime"] = new Date();
+    const params = config.params || {};
+    // 给请求加上时间戳参数，避免从缓存中拿数据。
+    config.params = Object.assign(params, CommonUtils.joinTimestamp());
     // 对所有POST请加密，必须是json数据提交，不支持表单
     if (config.method === "post" && HTTP_ENCRYPT) {
         config.headers["content-type"] = "application/json; charset=utf-8";
